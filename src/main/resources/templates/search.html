@@ -35,23 +35,22 @@
     <hr />
 
     <div th:if="${jobs} and ${jobs.size()}">
-        <h3 th:text="${#strings.capitalizeWords(title)} + ' for search term ' + ${term} + ' (' +${jobs.size() + ' results'} + ')'"></h3>
 
-        <div th:each="job : ${jobs}">
+    <h3 th:text="${#strings.capitalizeWords(title)} + ' for search term ' + ${term} + ' (' + ${jobs.size()} + ' results' + ')'"></h3>
 
-            <table class="job-listing">
-                <tr th:each="item : ${job.entrySet()}">
-                    <td th:text="${item.getKey()}"></td>
-                    <td th:text="${item.getValue()}"></td>
-                </tr>
-            </table>
+        <div th:fragment="jobz">
+            <div th:each="job : ${jobs}">
+                <table class="job-listing">
+                    <tr th:each="item : ${job.entrySet()}">
+                        <td th:text="${item.getKey()}"></td>
+                        <td th:text="${item.getValue()}"></td>
+                    </tr>
+                </table>
 
-            <hr />
+                <hr />
+            </div>
         </div>
-
     </div>
-
 </div>
-
 </body>
 </html>
