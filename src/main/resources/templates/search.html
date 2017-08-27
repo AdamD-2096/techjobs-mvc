@@ -43,7 +43,8 @@
                 <table class="job-listing">
                     <tr th:each="item : ${job.entrySet()}">
                         <td th:text="${#strings.capitalizeWords(item.getKey())}"></td>
-                        <td th:text="${item.getValue()}"></td>
+                        <td th:unless="${item.getKey() == 'name'}"><a th:href="@{/list/jobs(column=${item.getKey()},value=${item.getValue()})}" th:text="${item.getValue()}"></a></td>
+                        <td th:if="${item.getKey() == 'name'}" th:text="${item.getValue()}"></td>
                     </tr>
                 </table>
 
