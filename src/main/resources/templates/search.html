@@ -33,7 +33,7 @@
     </form>
 
     <hr />
-
+    <h3 th:unless="${jobs} and ${jobs.size()}">Sorry no results found <br /> Please check you're spelling and try again <br/>Or try a different search term</h3>
     <div th:if="${jobs} and ${jobs.size()}">
 
     <h3 th:text="${#strings.capitalizeWords(title)} + ' for search term ' + ${term} + ' (' + ${jobs.size()} + ' results' + ')'"></h3>
