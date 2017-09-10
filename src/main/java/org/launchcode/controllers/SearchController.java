@@ -31,12 +31,12 @@ public class SearchController {
         model.addAttribute("col",searchType);
         model.addAttribute("term",searchTerm);
         if (searchType.equals("all")) {
-            ArrayList<HashMap<String, String>> jobs = JobData.findByValue(searchTerm);
+            Iterable<HashMap<String, String>> jobs = JobData.findByValue(searchTerm);
             model.addAttribute("title", "All Jobs");
             model.addAttribute("jobs", jobs);
             return "search";
         } else {
-            ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+            Iterable<HashMap<String, String>> jobs = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("title", "All " + ListController.columnChoices.get(searchType) + " Values");
             model.addAttribute("jobs", jobs);
             return "search";
